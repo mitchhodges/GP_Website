@@ -108,6 +108,6 @@ async function submitForm(event) {
   successMessage.style.display = 'block';
 }
 
-const form = document.getElementById('sib-form');
+const form = document.getElementById('subscription-form');
 form.addEventListener('submit', submitForm);
 form.noValidate = true;
