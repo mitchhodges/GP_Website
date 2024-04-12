@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /Signup_Form.html
+Disallow: /404.shtml
+Disallow: /Confirm_Signup.html
+Disallow: /Reset_Password.html
+
+Sitemap: https://greenpwr.com/sitemap.xml

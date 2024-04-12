@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>SunHopper&trade;-D Energy Calculator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="SunHopper&trade;-D Energy Calculator helps calculate energy savings and performance estimations
+		for PV domestic hot water heaters." />
+		<meta name="keywords" content="PV hot water, photovoltaic hot water, solar hot water, water heating, SunHopper" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+		<link rel="manifest" href="icon/site.webmanifest">
+		<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+		<script type="text/javascript" src="assets/js/chart.min.js"></script>
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+		<header id="header">
+			<!-- Logo -->
+			<a class="logo" href="index.html"><img src="images/GreenPWR Main Logo.png" style="height:3.5rem;" alt="GreenPWR Logo"/></a>
+					
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="SunHopper.html"  class="active">Products</a>
+						<ul>
+							<li><a href="SunHopper.html">SunHopper-D</a></li>
+							<li><a href="Energy_Calculator.html">Energy Calculator</a></li>
+						</ul></li>
+					<li><a href="Technology.html">Technology</a>
+					<li><a href="AboutUs.html">About Us</a></li>
+					<li><a href="Intersolar2024.html">Events</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<span class="image borderless main"><img src="images/Frog_leaf.jpg" alt="Frog Banner" /></span>
+		<div id="main" class="wrapper top">
+			<div class="inner">
+				<!-- Content -->
+				<section class="content">
+					<div class="posts">
+						<article class="post">
+							<header>
+								<h1>Energy <font color="#5EA970">Calculator</font></h1>
+							</header>				
+							<p>With any renewable energy system, performance should be understood before investing and installing a device.  A properly sized 
+							SunHopper-D&trade; system with adequate sunlight will reduce energy consumption up to 75% and can support off-grid installations. 
+							Our Energy Calculator estimates the system performance, and energy savings per year to help size the system and set realistic
+							expectations.
+							</p>	
+
+							<div class="form">
+							<!-- Form -->
+								<form method="post" id="energyForm" onsubmit="readdata()">
+									<div class="row gtr-uniform">	
+									<!-- Zip code -->
+									<div class="col-6 col-12-xsmall">
+										Your Zip Code
+										<input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter your 5 digit Zip code" title="US 5 Digit Zip code." required />
+									</div>
+									<!-- Gallons per day -->
+									<div class="col-6 col-12-xsmall" min="0" max="10">
+										Gallons per day (<a href="#GPD_estimate">How to estimate gallons per day?</a>)
+										<input type="number" name="GPD" id="GPD" value="" placeholder="Enter Gallons of Hot Water used Per Day" title="Gallons of hot water used per day- between 1 and 100." min="1" max="100" required />
+									</div>
+									<!-- Backup Power Source -->
+									<div class="col-6 col-12-xsmall">
+										Backup Power Source
+										<select name="BU_Source" id="BU_Source" title="Select your backup energy source." required onchange="getText(this)">
+											<option value="">- Select Backup Energy Source -</option>
+											<option value="Off-Grid">None/Off-grid</option>
+											<option value="Electric">Electric</option>
+											<option value="Natural Gas">Natural Gas</option>
+											<option value="Propane">Propane</option>
+										</select>
+									</div>				
+									<!-- Heater power -->
+									<div class="col-6 col-12-xsmall">
+										Heater Power (kW)
+										<input type="number" name="Heater" id="Heater" value="" placeholder="Heater Power (kW)" title="Supported heaters are from 1kW to 5.5kW" min="1" max="5.5" step="0.1" required />
+									</div>				
+									<!-- Backup Energy Cost -->
+									<div class="col-6 col-12-xsmall">
+										<div id="backupEnergyInput">Please Select Backup Energy</div><!-- cost units -->
+											<input type="number" name="buCost" id="buCost" value="" placeholder="Backup Energy Cost" title="Enter your backup energy cost.  0 for off-grid." min="0" max="100" step="0.01" required />
+										</div>			
+									<!-- Usage profile -->
+									<div class="col-6 col-12-xsmall">
+										Water Usage profile
+										<select name="usageProfile" id="usageProfile" title="Select when you typically use your hot water." required>
+											<option value="">- Select Hot Water Usage Profile -</option>
+											<option value="Morning">Mostly in the morning</option>
+											<option value="Evening">Mostly in the evening</option>
+											<option value="Morning+Evening">Both morning and evening</option>
+											<option value="Constant">Constant over the day</option>
+										</select>
+									</div>
+									<div class="col-6 col-12-xsmall">
+										Array Size (Wp)
+										<input type="number" name="arrayWp" id="arrayWp" value="" placeholder="Array Size (Wp)" title="Array Power- 500Wp to 5000Wp" min="500" max="5000" step="1" required />
+									</div>
+									<!-- Break -->
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Submit" class="primary"></li>
+										</ul>
+									</div>
+									</div>
+								</form>
+							</div>
+							<p style="font-size: 70%; line-height: 1.2rem;">
+							DISCLAIMER: This calculator uses PVWatts V8 from NREL for expected solar output energy along with calculations from GreenPWR to calculate hot water energy demand and supplied energy.  
+							These figures assume no shading during the day, a flat plate installation set at optimal tilt, and azimuth of 180&deg;.	 This data is meant to show long-term averages of 
+							the expected system performance.  Variations will occur in real installations due to several factors including but not limited to PV panel variation, any shading conditions, 
+							weather conditions, and water temperature variation.  This calculator shows estimated performance and is not guaranteed.  
+							</p>
+							
+							<p style="font-size: 70%; line-height: 1.2rem;">
+							Model assumptions: electric immersion storage water heater UEF: 0.92.  Natural gas storage water heater UEF: 0.60.  Propane storage water heater UEF: 0.61.  Fossil 
+							backup using tankless will yield lower energy cost than calculated.
+							</p>
+							
+							<br>
+							<a class="anchor" id="results"></a>
+							<h1>Results</h1>				
+							<section class="canvas-grid-3x">
+								<article>
+									<p align="center">
+										<canvas id="myChart1" width="300" height="300"></canvas>
+										<div id="Chart1_Percentage" class="doughnut-inner">	
+											0%
+										</div>
+									</p>
+								</article>
+								<article>
+									<p align="center">
+										<canvas id="myChart2" width="300" height="300"></canvas>
+										<div id="Chart2_Percentage" class="doughnut-inner">	
+											0%
+										</div>
+									</p>
+								</article>
+								<article>
+									<div class="chart-container">
+										<canvas id="myChart3"></canvas>
+									</div>
+								</article>
+							</section>
+							<br>				
+							<section class="post-content">
+							
+								<div class="image">
+									<img id="diagram" src="images/System_Drawing.png" alt = "System Diagram"/>
+								</div>
+								<div>
+									<h3>Estimated Performance</h3>
+									<p id="output_numbers">
+									Press 'Submit" to calculate results.
+									<!-- Placeholder for incoming text from called calculator results-->
+									</p>
+								</div>
+							</section>							
+						</article>
+					</div>
+				</section>
+			</div>
+		</div>
+		
+<!-- Next Section, grey background -->
+			<section id="GPD_estimate" class="wrapper style2">
+				<div class="inner">
+					<!-- Content -->
+						<section class="content">
+							<div class="posts">
+								<article class="post">
+									<header>
+										<h1>Estimate Water <font color="#5EA970">Usage</font></h1>
+									</header>
+									<div class="post-content">
+										<div>
+											<div class="image">
+												<img src="images/Faucet_480.jpg" alt="Hot Water Tap" />
+											</div>
+										</div>
+										<div>
+											<p>Estimate hot water use from the following:
+											</p>
+											<ol>
+												<li>The average shower consumes 20 gallons of hot water, though this can vary wildly.</li>
+												<li>Sink usage for food preparation or hand dishwashing consumes 3 gallons of hot water.</li>
+												<li>Automatic dishwashers on average consume 7 gallons per use.</li>
+												<li>Clothes washing consumes 15-25 gallons of hot water per use.</li>
+											</ol>
+											<p>The average US household consumes 64 gallons of hot water per day.  Reference figures are taken from 
+											<a href ="https://www.energy.gov/energysaver/sizing-new-water-heater">energy.gov</a>'s article "Sizing a New Water Heater".
+											</p>
+										</div>
+									</div>
+								</article>
+							</div>
+						</section>		
+				</div>
+			</section>
+		
+		
+		
+		
+
+		<!-- clear form if the page is refreshed-->
+		<script language="JavaScript">
+			document.getElementById("zip").value = "";
+			document.getElementById("GPD").value = "";
+			document.getElementById("BU_Source").value = "";
+			document.getElementById("Heater").value = "";
+			document.getElementById("buCost").value = "";
+			document.getElementById("usageProfile").value = "";
+			document.getElementById("arrayWp").value = "";
+		</script>		
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class="inner with-sidebar">	
+				<!-- Content -->
+				<!-- Signup form -->
+				<div class="content">
+					<section id="Contact">
+						<header>
+							<h3>Join Our Mailing List</h3>
+						</header>
+						<div class="iframeForm">
+							<iframe src="Signup_Form.html" marginwidth="0" marginheight="0" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+						</div>
+					</section>
+				</div>
+				
+				<!-- Sidebar -->
+				<div class="sidebar">
+					<header>
+						<h3>Contact Us</h3>
+					</header>
+					<section>
+						<ul class="contact-icons">
+							<li class="icon solid fa-home">
+								<address>
+									GreenPWR, Inc<br />
+									501W Colfax St<br />
+									Palatine, IL 60067
+								</address>
+							</li>
+							<li class="icon solid fa-envelope">
+								<a href="mailto:info@greenpwr.com">info@greenpwr.com</a>
+							</li>
+							<li class="icon brands fa-linkedin">
+								<a href="https://www.linkedin.com/company/greenpwr">LinkedIn</a>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>				
+			<div class="copyright">
+				<span>&copy;2021-2024 GreenPWR, Inc.  All rights reserved.</span>
+			</div>
+		</section>
+
+		<!-- Scripts -->
+		<script type="text/javascript" src="assets/js/chartjs-plugin-datalabels.min.js"></script>
+		<script type="text/javascript" src="assets/js/calculator.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>		
+	</body>
+</html>
