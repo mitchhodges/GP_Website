@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>GreenPWR Confirm Newsletter</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Manufacturer of renewable energy devices with a focus on small scale solar PV." />
+		<meta name="keywords" content="PV hot water, photovoltaic hot water, solar hot water, water heating, SunHopper" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+		<link rel="manifest" href="icon/site.webmanifest">
+		<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+
+    <style>
+      .container-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 35px;
+        border-radius: 3px;
+      }
+      #x {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+	</head>
+	<body class="is-preload" style="background-color:#f7f7f7;padding-top:0;position:static;" onload=validate_token()>
+	
+	    <div class="container-center">
+			<!-- Logo -->
+			<a class="logo" href="index.html"><img src="images/GreenPWR Main Logo.png" style="height:3.5rem;" alt="GreenPWR Logo"/></a>
+			<!-- Form -->
+			<div id="x">
+				<h3 id="subscription-title">Validating info</h3>
+        <p id="subscription-subtitle" >Please wait for a moment...</p>
+			</div>
+		</div>
+    <script>
+      (async () => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const email = urlParams.get('email');
+
+        const title = document.getElementById("subscription-title");
+        const subtitle = document.getElementById("subscription-subtitle");
+
+        async function run() {
+          if (!email) {
+            title.innerText = "Invalid Link";
+            subtitle.innerText = "Please try again.";
+            return;
+          }
+          const resp = await fetch('https://wj5i7d6828.execute-api.us-east-1.amazonaws.com/auth/userSubscribe', {
+            method: 'POST',
+            body: JSON.stringify({
+              email: email,
+              policy: false
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (resp.status !== 200) {
+            title.innerText = "Invalid Link";
+            subtitle.innerText = "Please try again.";
+          }
+
+          const data = await resp.json();
+          if (!data.status) {
+            title.innerText = "Failed to unsubscribe";
+            subtitle.innerText = data.message;
+            return;
+          }
+
+          title.innerText = "Successfully Unsubscribed";
+          subtitle.innerText = "You have successfully un-subscribed from our newsletter.";
+        }
+
+        setTimeout(run, 1000);
+      })();
+    </script>
+	</body>
+</html>
