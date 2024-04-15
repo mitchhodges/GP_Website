@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Troubleshooting</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Arc fault troubleshooting for the SunHopper&trade;-D" />
+		<meta name="keywords" content="PV hot water, photovoltaic hot water, solar hot water, water heating, SunHopper" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	
+		<link rel="apple-touch-icon" sizes="180x180" href="../icon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+		<link rel="manifest" href="../icon/site.webmanifest">
+		<link rel="mask-icon" href="../icon/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+		<script type="text/javascript" src="./assets/js/chart.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<!-- Logo -->
+					<a class="logo" href="../index.html"><img src="../images/GreenPWR Main Logo.png" style="height:3.5rem;" alt="GreenPWR Logo"/></a>
+					
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="../index.html">Troubleshooting Home</a></li>
+							<li><a href="" class="active">Error Messages</a>
+								<ul>
+									<li><a href="Arc_fault_recovery.html">Arc Fault</a></li>
+									<li><a href="Ground_fault_recovery.html">Ground Fault</a></li>
+									<li><a href="RCD_fault_recovery.html">RCD Fault</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+			</header>
+
+<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<header>
+						<h1>Troubleshooting the <font color="#5EA970">SunHopper&trade;-D</font></h1>
+						<h2>Arc Fault Diagnosis</h2>
+					</header>
+				
+					<!-- Content -->				
+					<section class="content">
+						<div class="posts">
+							<article class="post">
+								<header>
+									<h3>Introduction</h3>
+								</header>
+								<div class="post">
+									<p>The arc fault detection system is part of the SunHopper&trade;-D's safety features.  This system verifies no arcs are present on the DC lines of the PV system.  An 
+									arc occurs when a damaged cable or connector makes partial connection which allows the inverter to begin operation, but begins to open a small gap when the inverter is 
+									running.  This creates a fire hazard where the inverter must be shut down to reduce energy (and thus heat) within the arc until it extinguishes.</p>
+	
+									<p>Arcs are detected by monitoring the input current waveform and inverter input parameters.  Several criteria must be met for the SunHopper&trade;-D to flag a possible
+									arc event.</p>
+									
+									<p>If an arc is detected, the system will disable the inverter and show an error message on the display and phone app.  Up to 5 automatic retries are attempted within 
+									24 hours.  The system will remain disabled for 10 minutes and attempt an automatic recovery.  </p>
+									
+									<p>The system requires a manual reset on the device user interface (UI) after 5 faults have been detected within 24 hours.</p>
+								</div>
+							</article>
+						</div>
+					</section>	
+				</div>
+			</section>
+	
+<!-- Next Section, grey background -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">		
+					<!-- Content -->				
+					<section class="content">
+						<div class="posts">
+							<article class="post">
+								<header>
+									<h3>Diagnosis</h3>
+								</header>
+								<div class="post">
+									<p>An occasional but rare arc fault may occur in normal operation.  This requires no intervention and will recover automatically.  A persistent fault must be investigated 
+									to determine the cause and remedy the system.  Check the following after shutting down the PV array:
+										<ol>
+											<li>Verify the PV connections to the SunHopper&trade;-D PV input terminals are tight and stripped to the correct length.</li>
+											<li>Verify all connections at the PV panels and rapid shutdown equipment (if installed) are tight.</li>
+											<li>Check the PV cables to ensure the cables are in good shape with no insulation damage.</li>
+										</ol>									
+									</p>
+									<p>Some false failures can also occur depending on the installation.  Check the following:
+										<ol>
+											<li>If a single conduit is used for another PV array's panels, false failures may be detected as the other inverter's input noise may be detected as an arc.  In this case,
+											the SunHopper&trade;-D PV cables would need to be located in a separate conduit</li>
+											<li>Some older PV inverters may radiate noise from the PV panels themselves.  Having a PV panel in close proximity to the SunHopper&trade;-D may also create a false failure. 
+											In this case, the other inverter may need additional input filtering, or the PV panels must be moved away from the noisy panels</li>
+										</ol>
+									</p>
+									
+								</div>
+							</article>
+							<article class="post">
+								<header>
+									<h1>Disable Arc Fault Detection</h1>
+								</header>
+								<div class="post-content">
+									<div class="post-icon">
+										<i class="fas fa-exclamation-triangle" style="color:#F72323"></i>
+									</div>	
+									<div>
+									<p>The arc fault detector can be disabled if this is not required by local code.  Verify local codes before disabling arc fault to ensure your system is installed to applicable 
+									building codes.
+										<ol>
+											<li>TODO</li>
+											<li>TODO</li>
+											<li>TODO</li>
+										</ol>
+									</p>
+									</div>
+								</div>			
+							</article>
+							
+						</div>
+					</section>	
+				</div>
+			</section>		
+
+		<!-- Footer -->
+			<section id="footer">
+				<div class="inner with-sidebar">
+				
+				<!-- Content -->
+					<!-- Blank left region next to contact details -->
+						<div class="content">
+						</div>
+
+					<!-- Sidebar -->
+						<div class="sidebar">
+							<header>
+								<h3>Contact Us</h3>
+							</header>
+							<section>
+								<ul class="contact-icons">
+									<li class="icon solid fa-home">
+										<address>
+											GreenPWR, Inc<br />
+											501W Colfax St<br />
+											Palatine, IL 60067
+										</address>
+									</li>
+									<li class="icon solid fa-envelope">
+										<a href="mailto:info@greenpwr.com">info@greenpwr.com</a>
+									</li>
+									<li class="icon brands fa-linkedin">
+										<a href="https://www.linkedin.com/company/greenpwr">LinkedIn</a>
+									</li>
+								</ul>
+							</section>
+						</div>
+				</div>				
+				<div class="copyright">
+					<span>&copy;2021-2024 GreenPWR, Inc.  All rights reserved.</span>
+				</div>
+			</section>
+
+		<!-- Scripts -->		
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script type="../text/javascript" src="assets/js/chartjs-plugin-datalabels.min.js"></script>
+			<script type="../text/javascript" src="assets/js/SunHopperCharts.js"></script>
+	</body>
+</html>
