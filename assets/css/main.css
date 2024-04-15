@@ -3173,7 +3173,27 @@ input ~ .tab { display: none }
 		transform: scale(1.05);
 		transition: 500ms ease;
 	}
-	
+/* Hover effect for exclaimation*/	
+	.post-icon-center .fa-exclamation-triangle{
+		color: #F72323;
+		transition: 500ms ease;
+	}
+	.post-icon-center .fa-exclamation-triangle:hover{
+		color: #5EA970;
+		transform: scale(1.05);
+		transition: 500ms ease;
+	}
+/* Hover effect for clipboard*/	
+	.post-icon-center .fa-clipboard-list{
+		color: #F8C221;
+		transition: 500ms ease;
+	}
+	.post-icon-center .fa-clipboard-list:hover{
+		color: #5EA970;
+		transform: scale(1.05);
+		transition: 500ms ease;
+	}
+
 	
 	
 	
